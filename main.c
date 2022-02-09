@@ -9,29 +9,59 @@ int main(int argc, char **argv)
 	printf("argv start\n");
 	for (int i = 0 ; i < argc ; ++i)
 		printf("index[%d]:%s\n", i, argv[i]);
-	printf("argv end\n");
+	printf("argv end\n\n");
+
 	check_parameter(argc, argv);
 	a = init_stack();
-	printf("a:%p\n", a);
+
 	b = init_stack();
-	printf("b:%p\n", b);
 
-
-	
-	//printf("%p %p %d\n", a->top, a->bottom, a->size);
-	//printf("%p %p %d\n", b->top, b->bottom, b->size);
 	printf("%p %p\n", a, b);
 
 	
 	for (int i = argc - 1 ; i > 0 ; --i)
 	{
-		printf("%s\n", argv[i]);
+		printf("insert:%s\n", argv[i]);
 		insert_stack(a, argv[i]);
 	}
-	t_stack *tmp = a;
-	while (tmp->top)
+	push_another_stack(a, b);
+	int size = a->size;
+	printf("size:%d\n", size);	
+	t_dllist *tmp = a->top;
+	printf("cout << a\n");
+	while (size--)
 	{
-		printf("%d ", tmp->top->value);
-		tmp->top = tmp->top->next;
+		printf("%d ", tmp->value);
+		tmp = tmp->next;
+	}
+	
+	printf("\ncout << b\n");
+	size = b->size;
+	printf("size:%d\n", size);	
+	tmp = b->top;
+	while (size--)
+	{
+		printf("%d ", tmp->value);
+		tmp = tmp->next;
+	}
+	push_another_stack(b, a);
+	size = a->size;
+	printf("size:%d\n", size);	
+	tmp = a->top;
+	printf("cout << a\n");
+	while (size--)
+	{
+		printf("%d ", tmp->value);
+		tmp = tmp->next;
+	}
+	
+	printf("\ncout << b\n");
+	size = b->size;
+	printf("size:%d\n", size);	
+	tmp = b->top;
+	while (size--)
+	{
+		printf("%d ", tmp->value);
+		tmp = tmp->next;
 	}
 }

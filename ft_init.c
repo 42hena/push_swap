@@ -13,13 +13,14 @@ int	get_number(char *str)
 	return (sum);
 }
 
-t_dllist* init_dllist()
+t_dllist* init_dllist(int num)
 {
-	printf("in");
-	t_dllist *tmp = (t_dllist *)malloc(sizeof(t_dllist));
-	tmp->prev = NULL;
-	tmp->next = NULL;
-	tmp->value = 0;
+	t_dllist *tmp;
+	
+	tmp = (t_dllist *)malloc(sizeof(t_dllist));
+	tmp->prev = tmp;
+	tmp->next = tmp;
+	tmp->value = num;
 	return (tmp);
 }
 
@@ -28,29 +29,26 @@ void		insert_stack(t_stack *stack, char *str)
 	int num;
 
 	num = get_number(str);
-
-	printf("size:%d\n", stack->size);
-	printf("num:%d\n", num);
-
 	if (stack->size == 0)
 	{
-		printf("%d", stack->size);
-		t_dllist *tmp = init_dllist();
-		printf("hio");
+		t_dllist *tmp = init_dllist(num);
 		stack->top = tmp;
 		stack->bottom = tmp;
 		stack->size++;
 	}
-	
 	else
 	{
-		while (stack->top)
-		{
-			stack->top = stack->top->next;
-		}
-		t_dllist *tmp = init_dllist();
-		stack->top->next = tmp;
-		tmp->prev = stack->top;
+		t_dllist *iter = stack->top;
+		int size = stack->size - 1;
+		t_dllist *tmp = init_dllist(num);
+		iter->prev = tmp;
+		while (size--)
+			iter = iter->next;
+		iter->next = tmp;
+		tmp->prev = iter;
+		tmp->next = stack->top;
+		stack->bottom = tmp;
+		stack->size++;
 	}
 }
 
@@ -59,9 +57,7 @@ t_stack*	init_stack()
 	t_stack *tmp;
 
 	tmp = NULL;
-	printf("%p\n", tmp);
 	tmp = (t_stack *)malloc(sizeof(t_stack));
-	printf("%p\n", tmp);
 	if (tmp == NULL)
 		return (false);
 	tmp->top = NULL;
