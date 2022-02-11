@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-void handle_from(t_stack *from)
+t_dllist* handle_from(t_stack *from)
 {
-    t_dllist * iter_from;
+    t_dllist *iter_from;
     if (from->size == 1) // 0개 될 예정
     {
         iter_from = from->top; //선언받기
@@ -17,10 +17,10 @@ void handle_from(t_stack *from)
         from->top = iter_from->next;
     }
     from->size--;
+    return iter_from;
 }
-void handle_to(t_stack *to)
+void handle_to(t_dllist *iter_from, t_stack *to)
 {
-    t_dllist * iter_from;
     t_dllist * iter_to;
 
     if (to->size == 0)
@@ -37,8 +37,14 @@ void handle_to(t_stack *to)
     }
     to->size++;
 }
-void push_another_stack(t_stack *from, t_stack *to)
+
+void push_another_stack(t_stack *from, t_stack *to, int kind)
 {
-    handle_from(from);
-    handle_to(to);
+    t_dllist *iter_from;
+    iter_from = handle_from(from);
+    handle_to(iter_from, to);
+    if (kind == ASTACK)
+        printf("pa\n");
+    else if (kind == BSTACK)
+        printf("pb\n");
 }

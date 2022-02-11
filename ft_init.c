@@ -56,7 +56,6 @@ t_stack*	init_stack()
 {
 	t_stack *tmp;
 
-	tmp = NULL;
 	tmp = (t_stack *)malloc(sizeof(t_stack));
 	if (tmp == NULL)
 		return (false);
