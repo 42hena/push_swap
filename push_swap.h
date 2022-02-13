@@ -42,4 +42,7 @@ void a_to_b(t_stack * a, t_stack * b, int r);
 void b_to_a(t_stack * a, t_stack * b, int r);
 void find_min_max(t_stack *tmp, int size, int pivot[2]);
 void print(t_stack *tmp, int kind);
+
+void a_under_three(int r, t_stack *a);
+void b_under_three(int r, t_stack *a, t_stack *b);
 # endif

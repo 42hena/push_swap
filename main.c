@@ -3,8 +3,12 @@
 
 void print(t_stack *tmp, int kind)
 {
+	if (tmp->top == NULL){
+		printf("no\n");
+		return ;
+	}
 	int size = tmp->size;
-
+	
 	t_dllist *list = tmp->top;
 	if (kind == ASTACK)
 		printf("A STACK start\n");
@@ -40,47 +44,11 @@ int main(int argc, char **argv)
 		printf("insert:%s\n", argv[i]);
 		insert_stack(a, argv[i]);
 	}
-	//-------------------------------
-	// printf("\npush_test start\n");
-	// push_another_stack(a, b);
-	// size = a->size;
-	// tmp = a->top;
-	// printf("A stack -->\n");
-	// while (size--)
-	// {
-	// 	printf(" [%d]", tmp->value);
-	// 	tmp = tmp->next;
-	// }
 
-	// size = a->size;
-	// tmp = a->bottom;
-	// printf("\nA stack <--\n");
-	// while (size--)
-	// {
-	// 	printf(" [%d]", tmp->value);
-	// 	tmp = tmp->prev;
-	// }
-	// //-----------------------------
-	// size = b->size;
-	// tmp = b->top;
-	// printf("\nB stack -->\n");
-	// while (size--)
-	// {
-	// 	printf(" [%d]", tmp->value);
-	// 	tmp = tmp->next;
-	// }
-
-	// size = b->size;
-	// tmp = b->bottom;
-	// printf("\nB stack <--\n");
-	// while (size--)
-	// {
-	// 	printf(" [%d]", tmp->value);
-	// 	tmp = tmp->prev;
-	// }
-
-	// rotate_togather(a, b);
-	printf("a_to_b test\n");
-	printf("asize:%d", a->size);
+	// printf("a_to_b test\n");
 	a_to_b(a, b, a->size);
+	// printf("real\n");
+	// print(a, ASTACK);
+	// print(b, BSTACK);
+	// printf("%p %p %p %p", a->top, a->bottom, b->top, b->bottom);
 }

@@ -14,7 +14,7 @@ static void get_info(t_stack *a, t_stack *b, int c[3], int p[2])
 
     tmp = a->top;
     
-    if (tmp->value >= p[0])
+    if (tmp->value >= p[0] && a->size != 1)
     {
         rotate_stack(a, ASTACK);
         c[0]++;
@@ -23,19 +23,19 @@ static void get_info(t_stack *a, t_stack *b, int c[3], int p[2])
     {
         push_another_stack(a, b, BSTACK);
         c[1]++;
-        if (b->top->value >= p[1])
+        if (b->top->value >= p[1] && b->size != 1)
         {
             rotate_stack(b, BSTACK);
             c[2]++;
         }
     }
+    
 }
 //ra pb rb
 static void reverse(t_stack * a, t_stack * b, int c[])
 {
     int count;
 
-    printf("test: %d %d\n", c[0], c[1]);
     count = c[2];
     while (count--)
         reverse_rotate_togather(a, b);
@@ -50,8 +50,9 @@ void a_to_b(t_stack * a, t_stack * b, int r)
     int command[3];
     int pivot[2];
     
-    if (r <= 2)
+    if (r <= 3)
     {
+        a_under_three(r, a);
         return ;
     }
     init_command(command);
@@ -59,12 +60,12 @@ void a_to_b(t_stack * a, t_stack * b, int r)
     
     while (r--)
         get_info(a, b, command, pivot);
-    // for (int i = 0 ; i < 3; ++i)
-    //     printf(" %d\n", command[i]);
-    // for (int i = 0 ; i < 2; ++i)
-    //     printf(" %d\n", pivot[i]);
+    
     reverse(a, b, command);
+    // print(a, ASTACK);
+    // print(b, BSTACK);
+    // printf("%d %d %d", command[0], command[1], command[2]);
     a_to_b(a, b, command[0]);//ra
-    // b_to_a(b, a, command[2]);//rb
-    // b_to_a(b, a, command[1] - command[2]);//pb - rb
+    b_to_a(a, b, command[2]);//rb
+    b_to_a(a, b, command[1] - command[2]);//pb - rb
 }

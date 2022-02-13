@@ -12,7 +12,7 @@ static void get_info(t_stack *a, t_stack *b, int c[3], int p[2])
     t_dllist *tmp;
 
     tmp = b->top;
-    if (tmp->value < p[1])
+    if (tmp->value < p[1] && b->size != 1)
     {
         rotate_stack(b, BSTACK);
         c[0]++;
@@ -21,7 +21,7 @@ static void get_info(t_stack *a, t_stack *b, int c[3], int p[2])
     {
         push_another_stack(b, a, ASTACK);
         c[1]++;
-        if (tmp->value < p[0])
+        if (tmp->value < p[0] && a->size != 1)
         {
             rotate_stack(a, ASTACK);
             c[2]++;
@@ -46,10 +46,10 @@ void b_to_a(t_stack * a, t_stack * b, int r)
 {
     int command[3];
     int pivot[2];
-    
-    if (r <= 1)
+
+    if (r <= 3)
     {
-        push_another_stack(b, a, ASTACK);
+        b_under_three(r, a, b);
         return ;
     }
     init_command(command);

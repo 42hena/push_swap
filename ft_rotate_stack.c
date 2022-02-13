@@ -4,10 +4,14 @@ void rotate_stack(t_stack *stack, int kind)
 {
     stack->bottom = stack->bottom->next;
     stack->top = stack->top->next;
-    if (kind == ASTACK)
+    if (kind == ASTACK){
         printf("ra\n");
-    else if (kind == BSTACK)
+    }
+    else if (kind == BSTACK){
         printf("rb\n");
+    }
+    
+    
 }
 
 void reverse_rotate_stack(t_stack *stack, int kind)
@@ -15,9 +19,14 @@ void reverse_rotate_stack(t_stack *stack, int kind)
     stack->top = stack->top->prev;
     stack->bottom = stack->bottom->prev;
     if (kind == ASTACK)
+    {
         printf("rra\n");
-    else if (kind == BSTACK)
+    }
+    else if (kind == BSTACK){
         printf("rrb\n");
+    }
+    
+    
 }
 
 void rotatestack(t_stack *stack)
@@ -41,7 +50,7 @@ void reverserotatestack(t_stack *stack)
 
 void reverse_rotate_togather(t_stack *a, t_stack *b)
 {
-    // reverserotatestack(a);
-    // reverserotatestack(b);
+    reverserotatestack(a);
+    reverserotatestack(b);
     printf("rrr\n");
 }

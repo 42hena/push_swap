@@ -1,80 +1,199 @@
 #include "push_swap.h"
 
-/*void b_onesort(t_stack *a, t_stack *b)
+void init_arr(int arr[], int r, t_dllist *tmp)
 {
-    push_another_stack(b, a);
+    int i;
+
+    i = 0;
+    while (r--)
+    {
+        arr[i] = tmp->value;
+        tmp = tmp->next;
+        ++i;
+    }
+}
+//오름차순
+void a_two(t_stack *a)
+{
+    int arr[2];
+    t_dllist *tmp;
+    
+    tmp = a->top;
+    arr[0] = tmp->value ;
+    arr[1] = tmp->next->value;
+    if (arr[0] > arr[1])
+        swap_stack(a, ASTACK);
+    return ;
+}
+void as_three(t_stack *a, int r)
+{
+    int arr[3];
+
+    init_arr(arr, r, a->top);
+    //1 2 3 생략
+    if (arr[0] < arr[2] && arr[2] < arr[1])         //1 3 2
+    {
+        swap_stack(a, ASTACK);                      //3 1 2
+        rotate_stack(a, ASTACK);                    //1 2 3
+    }
+    else if (arr[1] < arr[0] && arr[0] < arr[2])    //2 1 3
+        swap_stack(a, ASTACK);                      //1 2 3
+    else if (arr[2] < arr[0] && arr[0] < arr[1])    //2 3 1
+        reverse_rotate_stack(a, ASTACK);            //1 2 3
+    else if (arr[1] < arr[2] && arr[2] < arr[0])    //3 1 2
+        rotate_stack(a, ASTACK);                    //1 2 3
+    else                                            //3 2 1
+    {
+        rotate_stack(a, ASTACK);                    //2 1 3
+        swap_stack(a, ASTACK);                      //1 2 3
+    }
 }
 
-void a_twosort(t_stack *s, int r)
+void ab_three(t_stack *a, int r)
 {
-    if (s->top->value > s->top->next->value)
-        swap_stack(s);
+    int arr[3];
+
+    init_arr(arr, r, a->top);
+    // 1 2 3 생략
+    if (arr[0] < arr[2] && arr[2] < arr[1])         //1 3 2 ...
+    {
+        rotate_stack(a, ASTACK);                    //3 2 ... 1
+        swap_stack(a, ASTACK);                      //2 3 ... 1
+        reverse_rotate_stack(a, ASTACK);            //1 2 3 ...
+    }
+    else if (arr[1] < arr[0] && arr[0] < arr[2])    //2 1 3 ...
+        swap_stack(a, ASTACK);                      //1 2 3 ...
+    else if (arr[2] < arr[0] && arr[0] < arr[1])    //2 3 1 ...
+    {
+        rotate_stack(a, ASTACK);                    //3 1 ... 2
+        swap_stack(a, ASTACK);                      //1 3 ... 2
+        reverse_rotate_stack(a, ASTACK);            //2 1 3 ...
+        swap_stack(a, ASTACK);                      //1 2 3 ...
+    }
+    else if (arr[1] < arr[2] && arr[2] < arr[0])    //3 1 2 ...
+    {
+        swap_stack(a, ASTACK);                      //1 3 2 ...
+        rotate_stack(a, ASTACK);                    //3 2 ... 1
+        swap_stack(a, ASTACK);                      //2 3 ... 1
+        reverse_rotate_stack(a, ASTACK);            //1 2 3 ...
+    }
+    else                                            //3 2 1 ...
+    {
+        swap_stack(a, ASTACK);                      //2 3 1 ...
+        rotate_stack(a, ASTACK);                    //3 1 ... 2
+        swap_stack(a, ASTACK);                      //1 3 ... 2
+        reverse_rotate_stack(a, ASTACK);            //2 1 3 ...
+        swap_stack(a, ASTACK);                      //1 2 3 ...
+    }
 }
 
-void b_twosort(t_stack *s, int r)
-{
-    if (s->top->value < s->top->next->value)
-        swap_stack(s);
-}
 
-
-void threesort(t_stack *s, int m, int M)
+void a_under_three(int r, t_stack *a)
 {
-    if (m == 0 && M == 2)
+    int size;
+
+    size = a->size;
+    if (r == 1)
         return ;
-    else if (m == 0 && M == 1)
-    {
-        swap_stack(s);
-        rotate_stack(s, ASTACK);
-    }
-    else if (m == 1 && M == 2)
-        swap_stack(s);
-    else if (m == 2 && M == 1)
-        reverse_rotate_stack(s);
-    else if (m == 1 && M == 0)
-        rotate_stack(s);
-    else if (m == 2 && M == 0)
-    {
-        reverse_rotate_stack(s);
-        reverse_rotate_stack(s);
+    else if (r == 2)
+        a_two(a);
+    else{
+        if (size > 3)
+            ab_three(a, 3);
+        else
+            as_three(a, 3); 
     }
 }
+//------------------------------------------------
 
-void find_pos(t_stack *s, int r, int m, int M)
+void b_two(t_stack *b)
 {
-    int i;
-    int mindex;
-    int Mindex;
-    t_dllist *list;
-    list = s->top;
-    i = -1;
-    while (++i < r)
+    int arr[2];
+    t_dllist *tmp;
+    
+    tmp = b->top;
+    arr[0] = tmp->value ;
+    arr[1] = tmp->next->value;
+    if (arr[0] < arr[1])                            //1 2
+        swap_stack(b, BSTACK);                      //2 1
+}
+void bs_three(t_stack *b, int r)
+{
+    int arr[3];
+
+    init_arr(arr, r, b->top);
+    if (arr[0] < arr[1] && arr[1] < arr[2])         //1 2 3 
     {
-        if (m == list->value)
-            mindex = list->value;
-        if (M == list->value)
-            Mindex = list->value;
-        list = list->next;
+        rotate_stack(b, BSTACK);                    //2 3 1
+        rotate_stack(b, BSTACK);                    //3 2 1
     }
-    threesort(s, mindex, Mindex);
+    else if (arr[0] < arr[2] && arr[2] < arr[1])    //1 3 2
+        rotate_stack(b, BSTACK);                    //3 2 1
+    else if (arr[1] < arr[0] && arr[0] < arr[2])    //2 1 3
+        reverse_rotate_stack(b, BSTACK);            //3 2 1
+    else if (arr[2] < arr[0] && arr[0] < arr[1])    //2 3 1
+        swap_stack(b, BSTACK);                      //3 2 1
+    else if (arr[1] < arr[2] && arr[2] < arr[0])    //3 1 2
+    {
+        reverse_rotate_stack(b, BSTACK);            //2 3 1
+        swap_stack(b, BSTACK);                      //3 2 1
+    }
+    // 3 2 1 생략
 }
 
-void athreesort(t_stack *s, int r)
+/*
+내림 차순
+*/
+void bb_three(t_stack *b, int r)
 {
-    int min_value = INTMAX;
-    int max_value = INTMIN;
-    int i;
+    int arr[3];
 
-    t_dllist *list;
-    list = s->top;
-    i = -1;
-    while (++i < r)
+    init_arr(arr, r, b->top);
+    if (arr[0] < arr[1] && arr[1] < arr[2])         //1 2 3 ...
     {
-        if (min_value > list->value)
-            min_value = list->value;
-        if (max_value < list->value)
-            max_value = list->value;
-        list = list->next;
+        swap_stack(b, BSTACK);                      //2 1 3 ...
+        rotate_stack(b, BSTACK);                    //2 1 ... 3
+        reverse_rotate_stack(b, BSTACK);            //3 2 1 ...
     }
-    find_pos(s, r, min_value, max_value);
-}*/
+    else if (arr[0] < arr[2] && arr[2] < arr[1])    //1 3 2 ...
+    {
+        swap_stack(b, BSTACK);                      //3 1 2 ...
+        rotate_stack(b, BSTACK);                    //1 2 ... 3
+        swap_stack(b, BSTACK);                      //2 1 ... 3
+        reverse_rotate_stack(b, BSTACK);            //3 2 1 ...
+    }
+    else if (arr[1] < arr[0] && arr[0] < arr[2])    //2 1 3 ...
+    {
+        rotate_stack(b, BSTACK);                    //1 3 ... 2
+        swap_stack(b, BSTACK);                      //3 1 ... 2
+        reverse_rotate_stack(b, BSTACK);            //2 3 1 ...
+        swap_stack(b, BSTACK);                      //3 2 1 ...
+    }
+    else if (arr[2] < arr[0] && arr[0] < arr[1])    //2 3 1 ...
+        swap_stack(b, BSTACK);                      //3 2 1 ...
+    else if (arr[1] < arr[2] && arr[2] < arr[0])    //3 1 2 ...
+    {
+        rotate_stack(b, BSTACK);                    //1 2 ... 3
+        swap_stack(b, BSTACK);                      //2 1 ... 3
+        reverse_rotate_stack(b, BSTACK);            //3 2 1 ...
+    }
+    
+    //3 2 1 생략
+}
+
+void b_under_three(int r, t_stack *a, t_stack *b)
+{
+    int size;
+
+    size = b->size;
+    if (r == 2)
+        b_two(b);
+    else{
+        if (size > 3)
+            bb_three(b, 3);
+        else
+            bs_three(b, 3); 
+    }
+    for (int i = 0 ; i < r ; ++i)
+        push_another_stack(b, a, ASTACK);
+}
