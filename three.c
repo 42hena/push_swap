@@ -31,7 +31,6 @@ void as_three(t_stack *a, int r)
 
     init_arr(arr, r, a->top);
     //1 2 3 생략
-    printf("%d %d %d\n", arr[0], arr[1], arr[2]);
     // if (arr[0] < arr[1] && arr[1] < arr[2])
     //     printf("1 < 2 < 3\n");
     if (arr[0] < arr[2] && arr[2] < arr[1])         //1 3 2

@@ -42,8 +42,5 @@ int main(int argc, char **argv)
 	
 	// print(a, ASTACK);
 	// print(b, BSTACK);
-	printf("a_to_b test\n");
 	a_to_b(a, b, a->size);
-	print(a, ASTACK);
-	print(b, BSTACK);
 }
