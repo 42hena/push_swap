@@ -57,9 +57,8 @@ void check_sort(t_stack *a)
     bubble(arr, size);
     if (check_same(a, arr))
     {
-        printf("Error\n");
+        write(1, "Error\n", 6);
         free(arr);
         exit(0);
-        //free작업 필요할듯
     }
 }

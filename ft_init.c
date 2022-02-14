@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-int	get_number(char *str)
+long long	get_number(char *str)
 {
-	int sum;
+	long long	sum;
 
 	sum = 0;
 	while (*str)
@@ -24,23 +24,22 @@ t_dllist* init_dllist(int num)
 	return (tmp);
 }
 
-void		insert_stack(t_stack *stack, char *str)
+void		insert_stack(t_stack *stack, long long sum)
 {
-	int num;
+	t_dllist	*tmp;
+	t_dllist	*iter;
+	int			size;
 
-	num = get_number(str);
+	tmp = init_dllist(sum);
 	if (stack->size == 0)
 	{
-		t_dllist *tmp = init_dllist(num);
 		stack->top = tmp;
 		stack->bottom = tmp;
 		stack->size++;
 	}
 	else
 	{
-		t_dllist *iter = stack->top;
-		int size = stack->size - 1;
-		t_dllist *tmp = init_dllist(num);
+		iter = stack->top;
 		iter->prev = tmp;
 		while (size--)
 			iter = iter->next;

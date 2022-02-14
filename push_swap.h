@@ -1,6 +1,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -22,9 +23,11 @@ typedef struct s_stack{
 	int		size;
 }				t_stack;
 
-void		check_parameter(int argc, char **argv);
+void		check_parameter(int argc, char **argv, t_stack *a);
+bool		check_argc(int argc);
+bool		check_argv(int argc, char **argv, t_stack *a);
 t_stack*	init_stack();
-void		insert_stack(t_stack *stack, char *str);
+void		insert_stack(t_stack *stack, long long sum);
 
 void push_another_stack(t_stack *from, t_stack *to, int kind);
 
@@ -49,4 +52,6 @@ void b_under_three(t_stack *a, t_stack *b, int r);
 void as_five(t_stack *a, t_stack *b, int r);
 void as_four(t_stack *a, t_stack *b, int r);
 void check_sort(t_stack *a);
+
+char **ft_split(char const *s, char c);
 # endif
