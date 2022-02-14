@@ -53,5 +53,4 @@ void as_five(t_stack *a, t_stack *b, int r);
 void as_four(t_stack *a, t_stack *b, int r);
 void check_sort(t_stack *a);
 
-char **ft_split(char const *s, char c);
 # endif

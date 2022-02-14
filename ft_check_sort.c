@@ -46,6 +46,7 @@ void check_sort(t_stack *a)
     t_dllist *list;
     int i;
 
+    list = a->top;
     i = -1;
     size = a->size;
     arr = (int *)malloc(sizeof(int) * size);
@@ -57,7 +58,7 @@ void check_sort(t_stack *a)
     bubble(arr, size);
     if (check_same(a, arr))
     {
-        write(1, "Error\n", 6);
+        printf("no\n");
         free(arr);
         exit(0);
     }

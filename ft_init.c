@@ -13,7 +13,7 @@ long long	get_number(char *str)
 	return (sum);
 }
 
-t_dllist* init_dllist(int num)
+t_dllist* init_dllist(long long num)
 {
 	t_dllist *tmp;
 	
@@ -26,26 +26,21 @@ t_dllist* init_dllist(int num)
 
 void		insert_stack(t_stack *stack, long long sum)
 {
-	t_dllist	*tmp;
-	t_dllist	*iter;
-	int			size;
-
-	tmp = init_dllist(sum);
+	t_dllist *tmp = init_dllist(sum);
 	if (stack->size == 0)
 	{
+		t_dllist *tmp = init_dllist(sum);
 		stack->top = tmp;
 		stack->bottom = tmp;
 		stack->size++;
 	}
 	else
 	{
-		iter = stack->top;
-		iter->prev = tmp;
-		while (size--)
-			iter = iter->next;
-		iter->next = tmp;
+		t_dllist *iter = stack->bottom;
 		tmp->prev = iter;
-		tmp->next = stack->top;
+		tmp->next = iter->next;
+		iter->next->prev = tmp;
+		iter->next = tmp;
 		stack->bottom = tmp;
 		stack->size++;
 	}

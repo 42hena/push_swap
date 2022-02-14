@@ -26,31 +26,30 @@ bool is_int(long long sum)
 		return (false);
 	return (true);
 }
-static bool	is_int_number(char *str, t_stack *a)
+static bool	ft_split(char *str, t_stack *a)
 {
 	long long	sum;
 	int			i;
 	int			flag;
 
-	i = -1;
-	while (str[++i])
+	i = 0;
+	while (str[i])
 	{
 		init_value(&sum, &flag);
 		while (str[i] == ' ')
 			++i;
 		sign_handle(str[i], &i, &flag);
-		while (str[i] != ' ')
+		while (str[i] && str[i] != ' ')
 		{
 			if (is_char_number(str[i]))
 				sum = sum * 10 + str[i] - '0';
 			else
 				return (false);
-			i++;
+			++i;
 		}
-		if (!is_int)
+		if (!is_int(sum))
 			return (false);
 		insert_stack(a, sum);
-		sum = 0;
 	}
 	return (true);
 }
@@ -62,7 +61,7 @@ bool	check_argv(int argc, char **argv, t_stack *a)
 	i = 0;
 	while (++i < argc)
 	{
-		if (!is_int_number(argv[i], a))
+		if (!ft_split(argv[i], a))
 			return (false);
 	}
 	return (true);
