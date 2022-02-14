@@ -31,14 +31,25 @@ static void get_info(t_stack *a, t_stack *b, int c[3], int p[2])
 
 static void reverse(t_stack * a, t_stack * b, int c[])
 {
-    int count;
+    int i;
 
-    count = c[2];
-    while (count--)
+    i = 0;
+
+    while (i < c[0] && i < c[2])
+    {
         reverse_rotate_togather(a, b);
-    count = c[0] - c[2];
-    while (count--)
+        ++i;
+    }
+    while (i < c[0])
+    {
         reverse_rotate_stack(b, BSTACK);
+        ++i;
+    }
+    while (i < c[2])
+    {
+        reverse_rotate_stack(a, ASTACK);
+        ++i;
+    }
 }
 
 //rb pa ra
@@ -49,7 +60,7 @@ void b_to_a(t_stack * a, t_stack * b, int r)
 
     if (r <= 3)
     {
-        b_under_three(r, a, b);
+        b_under_three(a, b, r);
         return ;
     }
     init_command(command);

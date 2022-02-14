@@ -27,28 +27,23 @@ int main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 
-	printf("argv start\n");
-	for (int i = 0 ; i < argc ; ++i)
-		printf("index[%d]:%s\n", i, argv[i]);
-	printf("argv end\n\n");
+	// printf("argv start\n");
+	// for (int i = 0 ; i < argc ; ++i)
+	// 	printf("index[%d]:%s\n", i, argv[i]);
+	// printf("argv end\n\n");
 
 	check_parameter(argc, argv);
 	a = init_stack();
 	b = init_stack();
-
-	printf("%p %p\n", a, b);
-
 	
-	for (int i = argc - 1 ; i > 0 ; --i)
-	{
-		printf("insert:%s\n", argv[i]);
+	for (int i = 1 ; i < argc ; ++i)
 		insert_stack(a, argv[i]);
-	}
-
-	// printf("a_to_b test\n");
-	a_to_b(a, b, a->size);
-	// printf("real\n");
+	check_sort(a);
+	
 	// print(a, ASTACK);
 	// print(b, BSTACK);
-	// printf("%p %p %p %p", a->top, a->bottom, b->top, b->bottom);
+	printf("a_to_b test\n");
+	a_to_b(a, b, a->size);
+	print(a, ASTACK);
+	print(b, BSTACK);
 }

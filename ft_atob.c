@@ -34,14 +34,25 @@ static void get_info(t_stack *a, t_stack *b, int c[3], int p[2])
 //ra pb rb
 static void reverse(t_stack * a, t_stack * b, int c[])
 {
-    int count;
+    int i;
 
-    count = c[2];
-    while (count--)
+    i = 0;
+    printf("count : %d %d %d\n", c[0], c[1], c[2]);
+    while (i < c[0] && i < c[2])
+    {
         reverse_rotate_togather(a, b);
-    count = c[0] - c[2];
-    while (count--)
+        ++i;
+    }
+    while (i < c[0])
+    {
         reverse_rotate_stack(a, ASTACK);
+        ++i;
+    }
+    while (i < c[2])
+    {
+        reverse_rotate_stack(b, BSTACK);
+        ++i;
+    }
 }
 //ra vs rra
 
@@ -50,9 +61,9 @@ void a_to_b(t_stack * a, t_stack * b, int r)
     int command[3];
     int pivot[2];
     
-    if (r <= 3)
+    if (r <= 5)
     {
-        a_under_three(r, a);
+        a_under_five(a, b, r);
         return ;
     }
     init_command(command);
@@ -60,7 +71,6 @@ void a_to_b(t_stack * a, t_stack * b, int r)
     
     while (r--)
         get_info(a, b, command, pivot);
-    
     reverse(a, b, command);
     // print(a, ASTACK);
     // print(b, BSTACK);

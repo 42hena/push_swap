@@ -31,6 +31,9 @@ void as_three(t_stack *a, int r)
 
     init_arr(arr, r, a->top);
     //1 2 3 생략
+    printf("%d %d %d\n", arr[0], arr[1], arr[2]);
+    // if (arr[0] < arr[1] && arr[1] < arr[2])
+    //     printf("1 < 2 < 3\n");
     if (arr[0] < arr[2] && arr[2] < arr[1])         //1 3 2
     {
         swap_stack(a, ASTACK);                      //3 1 2
@@ -42,7 +45,7 @@ void as_three(t_stack *a, int r)
         reverse_rotate_stack(a, ASTACK);            //1 2 3
     else if (arr[1] < arr[2] && arr[2] < arr[0])    //3 1 2
         rotate_stack(a, ASTACK);                    //1 2 3
-    else                                            //3 2 1
+    else if (arr[2] < arr[1] && arr[1] < arr[0])    //3 2 1
     {
         rotate_stack(a, ASTACK);                    //2 1 3
         swap_stack(a, ASTACK);                      //1 2 3
@@ -55,6 +58,8 @@ void ab_three(t_stack *a, int r)
 
     init_arr(arr, r, a->top);
     // 1 2 3 생략
+    // if (arr[0] < arr[1] && arr[1] < arr[2])
+    //     printf("1 < 2 < 3\n");
     if (arr[0] < arr[2] && arr[2] < arr[1])         //1 3 2 ...
     {
         rotate_stack(a, ASTACK);                    //3 2 ... 1
@@ -77,7 +82,7 @@ void ab_three(t_stack *a, int r)
         swap_stack(a, ASTACK);                      //2 3 ... 1
         reverse_rotate_stack(a, ASTACK);            //1 2 3 ...
     }
-    else                                            //3 2 1 ...
+    else if (arr[2] < arr[1] && arr[1] < arr[0])    //3 2 1 ...
     {
         swap_stack(a, ASTACK);                      //2 3 1 ...
         rotate_stack(a, ASTACK);                    //3 1 ... 2
@@ -88,21 +93,26 @@ void ab_three(t_stack *a, int r)
 }
 
 
-void a_under_three(int r, t_stack *a)
+void a_under_five(t_stack *a, t_stack *b, int r)
 {
     int size;
 
     size = a->size;
-    if (r == 1)
+    if (r <= 1)
         return ;
     else if (r == 2)
         a_two(a);
-    else{
+    else if (r == 3)
+    {
         if (size > 3)
             ab_three(a, 3);
         else
             as_three(a, 3); 
     }
+    else if (r == 4)
+        as_four(a, b, r);
+    else
+        as_five(a, b, r);
 }
 //------------------------------------------------
 
@@ -138,7 +148,8 @@ void bs_three(t_stack *b, int r)
         reverse_rotate_stack(b, BSTACK);            //2 3 1
         swap_stack(b, BSTACK);                      //3 2 1
     }
-    // 3 2 1 생략
+    // else if (arr[2] < arr[1] && arr[1] < arr[0])
+    //     printf("3 > 2 > 1\n");
 }
 
 /*
@@ -177,18 +188,22 @@ void bb_three(t_stack *b, int r)
         swap_stack(b, BSTACK);                      //2 1 ... 3
         reverse_rotate_stack(b, BSTACK);            //3 2 1 ...
     }
-    
+    // else if (arr[2] < arr[1] && arr[1] < arr[0])
+    //     printf("3 > 2 > 1\n");
     //3 2 1 생략
 }
 
-void b_under_three(int r, t_stack *a, t_stack *b)
+void b_under_three(t_stack *a, t_stack *b, int r)
 {
     int size;
 
     size = b->size;
+    if (r <= 0)
+        return ;
     if (r == 2)
         b_two(b);
-    else{
+    else
+    {
         if (size > 3)
             bb_three(b, 3);
         else
