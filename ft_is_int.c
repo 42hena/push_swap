@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 15:10:32 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 15:12:33 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/15 15:16:02 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	is_int_range(t_stack *a, t_stack *b)
 	while (size--)
 	{
 		if (!check_int(tmp->value))
-			print_error("Error\nNot INT");
+			print_error("Error\nNot INT", a, b);
 		tmp = tmp->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:40:25 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 14:20:25 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/15 15:15:04 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ bool		check_argc(int argc);
 bool		check_argv(int argc, char **argv, t_stack *a);
 void		insert_stack(t_stack *stack, long long sum);
 void		print_error(const char *s, t_stack *a, t_stack *b);
+void		is_int_range(t_stack *a, t_stack *b);
 void		check_duplicate(t_stack *a, t_stack *b);
 void		check_sort(t_stack *a, t_stack *b);
 
