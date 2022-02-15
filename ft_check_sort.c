@@ -39,7 +39,7 @@ bool check_same(t_stack *a, int arr[])
     return true;
 }
 
-void check_sort(t_stack *a)
+void check_sort(t_stack *a, t_stack *b)
 {
     int size;
     int *arr;
@@ -58,8 +58,8 @@ void check_sort(t_stack *a)
     bubble(arr, size);
     if (check_same(a, arr))
     {
-        printf("no\n");
         free(arr);
-        exit(0);
+        print_error("Error\nalready sorted", a, b);
     }
+    free(arr);
 }

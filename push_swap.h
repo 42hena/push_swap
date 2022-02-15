@@ -23,11 +23,16 @@ typedef struct s_stack{
 	int		size;
 }				t_stack;
 
-void		check_parameter(int argc, char **argv, t_stack *a);
+t_stack*	init_stack();
+bool		check_parameter(int argc, char **argv, t_stack *a);
 bool		check_argc(int argc);
 bool		check_argv(int argc, char **argv, t_stack *a);
-t_stack*	init_stack();
 void		insert_stack(t_stack *stack, long long sum);
+void 		print_error(const char *s, t_stack *a, t_stack *b);
+void		check_duplicate(t_stack *a, t_stack *b);
+void		check_sort(t_stack *a, t_stack *b);
+
+
 
 void push_another_stack(t_stack *from, t_stack *to, int kind);
 
@@ -51,6 +56,6 @@ void b_under_three(t_stack *a, t_stack *b, int r);
 
 void as_five(t_stack *a, t_stack *b, int r);
 void as_four(t_stack *a, t_stack *b, int r);
-void check_sort(t_stack *a);
+
 
 # endif

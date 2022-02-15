@@ -12,16 +12,11 @@
 
 #include "push_swap.h"
 
-void	check_parameter(int argc, char **argv, t_stack *a)
+bool	check_parameter(int argc, char **argv, t_stack *a)
 {
 	if (!check_argc(argc))
-	{
-		printf("argc\n");
-		//exit(0);
-	}
+		return (false);
 	if (!check_argv(argc, argv, a))
-	{
-		printf("argv\n");
-		//exit(0);
-	}
+		return (false);
+	return (true);
 }

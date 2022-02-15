@@ -2,15 +2,16 @@
 
 int	main(int argc, char **argv)
 {
-	int i = 0;
 	t_stack	*a;
 	t_stack	*b;
-	char **param;
+	bool	ret;
 
 	a = init_stack();
 	b = init_stack();
-	check_parameter(argc, argv, a);
-	
-	check_sort(a);
-	// a_to_b(a, b, a->size);
+	if (!check_parameter(argc, argv, a))
+		print_error("Error\nParameter", a, b);
+	check_duplicate(a, b);
+	check_sort(a, b);
+	a_to_b(a, b, a->size);
+	print_error("", a, b);
 }
