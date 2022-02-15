@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:35:33 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 14:48:10 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/15 15:07:43 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ static bool	ft_split(char *str, t_stack *a)
 				return (false);
 			++i;
 		}
-		if (!(sum > 2147483647 || sum < -2147483648))
-			return (false);
+		while (str[i] == ' ')
+			++i;
 		insert_stack(a, sum);
 	}
 	return (true);

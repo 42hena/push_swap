@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:25:29 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 13:25:29 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/15 15:11:37 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,20 @@ int	main(int argc, char **argv)
 
 	a = init_stack();
 	b = init_stack();
+	//printf("%p %p %p %d %p %p %p %d\n", a, a->top, a->bottom, a->size, b, b->top, b->bottom, b->size);
 	if (!check_parameter(argc, argv, a))
 		print_error("Error\nParameter", a, b);
-	check_duplicate(a, b);
-	check_sort(a, b);
-	a_to_b(a, b, a->size);
-	print_error("", a, b);
+	t_dllist *tmp = a->top;
+	int size = a->size;
+	printf("size: [%d]\n", a->size);
+	while (size--)
+	{
+		printf("value:[%d]\n", tmp->value);
+		tmp = tmp->next;
+	}
+	//check_duplicate(a, b);
+	
+	//check_sort(a, b);
+	//a_to_b(a, b, a->size);
+	//print_error("", a, b);
 }
