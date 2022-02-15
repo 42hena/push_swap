@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:35:22 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 15:46:07 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/15 16:26:49 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	init_arr(int arr[], int r, t_dllist *tmp)
 	}
 }
 
-static void	a_two(t_stack *a)
+void	a_two(t_stack *a)
 {
 	int			arr[2];
 	t_dllist	*tmp;
@@ -38,7 +38,7 @@ static void	a_two(t_stack *a)
 	return ;
 }
 
-static void	as_three(t_stack *a, int r)
+void	as_three(t_stack *a, int r)
 {
 	int	arr[3];
 
@@ -61,7 +61,7 @@ static void	as_three(t_stack *a, int r)
 	}
 }
 
-static void	ab_three(t_stack *a, int r)
+void	ab_three(t_stack *a, int r)
 {
 	int	arr[3];
 
@@ -78,7 +78,7 @@ static void	ab_three(t_stack *a, int r)
 		a_max_mid_min(a);
 }
 
-void	a_under_five(t_stack *a, t_stack *b, int r)
+void	a_under_three(t_stack *a, t_stack *b, int r)
 {
 	int	size;
 
@@ -94,8 +94,4 @@ void	a_under_five(t_stack *a, t_stack *b, int r)
 		else
 			as_three(a, 3);
 	}
-	else if (r == 4)
-		as_four(a, b, r);
-	else
-		as_five(a, b, r);
 }

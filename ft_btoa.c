@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:25:23 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 13:25:24 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/15 16:47:29 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	get_info(t_stack *a, t_stack *b, int c[3], int p[2])
 	t_dllist	*tmp;
 
 	tmp = b->top;
-	if (tmp->value < p[1] && b->size != 1)
+	if (tmp->value < p[1])
 	{
 		rotate_stack(b, BSTACK);
 		c[0]++;
@@ -33,7 +33,7 @@ static void	get_info(t_stack *a, t_stack *b, int c[3], int p[2])
 	{
 		push_another_stack(b, a, ASTACK);
 		c[1]++;
-		if (tmp->value < p[0] && a->size != 1)
+		if (tmp->value < p[0])
 		{
 			rotate_stack(a, ASTACK);
 			c[2]++;

@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:40:25 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 15:15:04 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/15 16:28:24 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,14 @@ void		b_to_a(t_stack *a, t_stack *b, int r);
 void		find_min_max(t_stack *tmp, int size, int pivot[2]);
 void		print(t_stack *tmp, int kind);
 
-void		a_under_five(t_stack *a, t_stack *b, int r);
+void		a_under_three(t_stack *a, t_stack *b, int r);
 void		b_under_three(t_stack *a, t_stack *b, int r);
-
+void		a_under_five(t_stack *a, t_stack *b, int r);
 void		as_five(t_stack *a, t_stack *b, int r);
 void		as_four(t_stack *a, t_stack *b, int r);
+void		a_two(t_stack *a);
+void		as_three(t_stack *a, int r);
+void		ab_three(t_stack *a, int r);
 
 void		a_min_max_mid(t_stack *a);
 void		a_mid_min_max(t_stack *a);
