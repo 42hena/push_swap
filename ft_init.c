@@ -7,16 +7,16 @@ long long	get_number(char *str)
 	sum = 0;
 	while (*str)
 	{
-		sum = sum * 10 + *str -'0';
+		sum = sum * 10 + *str - '0';
 		str++;
 	}
 	return (sum);
 }
 
-t_dllist* init_dllist(long long num)
+t_dllist	*init_dllist(long long num)
 {
-	t_dllist *tmp;
-	
+	t_dllist	*tmp;
+
 	tmp = (t_dllist *)malloc(sizeof(t_dllist));
 	tmp->prev = tmp;
 	tmp->next = tmp;
@@ -24,19 +24,21 @@ t_dllist* init_dllist(long long num)
 	return (tmp);
 }
 
-void		insert_stack(t_stack *stack, long long sum)
+void	insert_stack(t_stack *stack, long long sum)
 {
-	t_dllist *tmp = init_dllist(sum);
+	t_dllist	*tmp;
+	t_dllist	*iter;
+
+	tmp = init_dllist(sum);
 	if (stack->size == 0)
 	{
-		t_dllist *tmp = init_dllist(sum);
 		stack->top = tmp;
 		stack->bottom = tmp;
 		stack->size++;
 	}
 	else
 	{
-		t_dllist *iter = stack->bottom;
+		iter = stack->bottom;
 		tmp->prev = iter;
 		tmp->next = iter->next;
 		iter->next->prev = tmp;
@@ -46,9 +48,9 @@ void		insert_stack(t_stack *stack, long long sum)
 	}
 }
 
-t_stack*	init_stack()
+t_stack	*init_stack(void)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = (t_stack *)malloc(sizeof(t_stack));
 	if (tmp == NULL)
