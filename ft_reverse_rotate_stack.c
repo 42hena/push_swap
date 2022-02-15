@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rotate_stack.c                                  :+:      :+:    :+:   */
+/*   ft_reverse_rotate_stack.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 14:48:27 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 14:52:49 by hena             ###   ########.fr       */
+/*   Created: 2022/02/15 14:53:07 by hena              #+#    #+#             */
+/*   Updated: 2022/02/15 14:54:13 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_stack(t_stack *stack, int kind)
+void	reverse_rotate_stack(t_stack *stack, int kind)
 {
-	stack->bottom = stack->bottom->next;
-	stack->top = stack->top->next;
+	stack->top = stack->top->prev;
+	stack->bottom = stack->bottom->prev;
 	if (kind == ASTACK)
-		write(1, "ra\n", 3);
+		write(1, "rra\n", 4);
 	else if (kind == BSTACK)
-		write(1, "rb\n", 3);
+		write(1, "rrb\n", 4);
 }
 
-void	rotatestack(t_stack *stack)
+void	reverserotatestack(t_stack *stack)
 {
-	stack->bottom = stack->bottom->next;
-	stack->top = stack->top->next;
+	stack->top = stack->top->prev;
+	stack->bottom = stack->bottom->prev;
 }
 
-void	rotate_togather(t_stack *a, t_stack *b)
+void	reverse_rotate_togather(t_stack *a, t_stack *b)
 {
-	rotatestack(a);
-	rotatestack(b);
-	write(1, "rr\n", 3);
+	reverserotatestack(a);
+	reverserotatestack(b);
+	write(1, "rrr\n", 4);
 }

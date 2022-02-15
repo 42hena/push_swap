@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_argv.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 14:35:33 by hena              #+#    #+#             */
+/*   Updated: 2022/02/15 14:48:10 by hena             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static bool	is_char_number(char c)
@@ -7,7 +19,7 @@ static bool	is_char_number(char c)
 	return (false);
 }
 
-void		init_value(long long *sum, int *flag)
+static void	init_value(long long *sum, int *flag)
 {
 	*sum = 0;
 	*flag = 1;
@@ -20,12 +32,7 @@ static void	sign_handle(char c, int *i, int *flag)
 	if (c == '-')
 		*flag = -1;
 }
-bool is_int(long long sum)
-{
-	if (sum > 2147483647 || sum <-2147483648)
-		return (false);
-	return (true);
-}
+
 static bool	ft_split(char *str, t_stack *a)
 {
 	long long	sum;
@@ -47,7 +54,7 @@ static bool	ft_split(char *str, t_stack *a)
 				return (false);
 			++i;
 		}
-		if (!is_int(sum))
+		if (!(sum > 2147483647 || sum < -2147483648))
 			return (false);
 		insert_stack(a, sum);
 	}
