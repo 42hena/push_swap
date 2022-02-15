@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:25:29 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 15:29:52 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/15 15:53:01 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	check_duplicate(a, b);
 	is_int_range(a, b);
 	check_sort(a, b);
-	printf("size:%d\n", a->size);
 	a_to_b(a, b, a->size);
+	t_dllist *tmp = a->top;
 	print_error("", a, b);
 }
