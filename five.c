@@ -1,13 +1,13 @@
 #include "push_swap.h"
 
-static void	init(t_stack *a, int arr[])
+static void	init(t_stack *a, int arr[], int r)
 {
 	int			i;
 	t_dllist	*tmp;
 
 	tmp = a->top;
 	i = -1;
-	while (++i < a->size)
+	while (++i < r)
 	{
 		arr[i] = tmp->value;
 		tmp = tmp->next;
@@ -23,9 +23,10 @@ static int	bubble(int sort[], int r)
 	i = -1;
 	while (++i < r)
 	{
+		j = i;
 		while (++j < r)
 		{
-			if (sort[i] < sort[j])
+			if (sort[i] > sort[j])
 			{
 				tmp = sort[i];
 				sort[i] = sort[j];
@@ -36,7 +37,7 @@ static int	bubble(int sort[], int r)
 	return (sort[2]);
 }
 
-int	getmidvalue(int arr[], int r)
+static int	getmidvalue(int arr[], int r)
 {
 	int	sort[5];
 	int	i;
@@ -53,7 +54,7 @@ void	as_five(t_stack *a, t_stack *b, int r)
 	int	mid;
 	int	size;
 
-	init(a, arr);
+	init(a, arr, r);
 	mid = getmidvalue(arr, r);
 	size = r;
 	while (size--)
@@ -73,9 +74,10 @@ void	as_four(t_stack *a, t_stack *b, int r)
 	int	mid;
 	int	size;
 
-	init(a, arr);
+	init(a, arr, r);
 	mid = getmidvalue(arr, r);
 	size = r;
+	
 	while (size--)
 	{
 		if (a->top->value >= mid)

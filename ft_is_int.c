@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 15:10:32 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 15:16:02 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/15 15:23:37 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ static bool	check_int(long long value)
 	return (true);
 }
 
-
 void	is_int_range(t_stack *a, t_stack *b)
 {
 	int			size;
 	t_dllist	*tmp;
-	
+
 	size = a->size;
 	tmp = a->top;
 	while (size--)

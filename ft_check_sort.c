@@ -60,7 +60,7 @@ void	check_sort(t_stack *a, t_stack *b)
 	if (check_same(a, arr))
 	{
 		free(arr);
-		print_error("Error\nalready sorted", a, b);
+		print_error("", a, b);
 	}
 	free(arr);
 }
