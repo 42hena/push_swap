@@ -52,6 +52,10 @@ void	push_another_stack(t_stack *from, t_stack *to, int kind)
 	handle_to(iter_from, to);
 	if (kind == ASTACK)
 		write(1, "pa\n", 3);
+		// printf("pa\n");
 	else if (kind == BSTACK)
 		write(1, "pb\n", 3);
+		// printf("pb\n");
+	// print_stack(from);
+	// print_stack(to);
 }

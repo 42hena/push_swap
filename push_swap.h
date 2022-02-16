@@ -26,7 +26,7 @@
 typedef struct s_dllist {
 	struct s_dllist	*prev;
 	struct s_dllist	*next;
-	int				value;
+	long long		value;
 }				t_dllist;
 
 typedef struct s_stack{
@@ -80,5 +80,5 @@ void		b_min_max_mid(t_stack *b);
 void		b_mid_min_max(t_stack *b);
 void		b_mid_max_min(t_stack *b);
 void		b_max_min_mid(t_stack *b);
-
+void		print_stack(t_stack *tmp);
 #endif

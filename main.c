@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	check_duplicate(a, b);
 	is_int_range(a, b);
 	check_sort(a, b);
-	t_dllist *tmp = a->top;
+	
 	int size = a->size;
 	if (a->size <= 5)
 	{
@@ -33,10 +33,11 @@ int	main(int argc, char **argv)
 		print_error("", a, b);
 	}
 	a_to_b(a, b, a->size);
-	while (size--)
-	{
-		printf("[%d]", tmp->value);
-		tmp = tmp->next;
-	}
+	t_dllist *tmp = a->top;
+	// while (size--)
+	// {
+	// 	printf("[%d]", tmp->value);
+	// 	tmp = tmp->next;
+	// }
 	print_error("", a, b);
 }
