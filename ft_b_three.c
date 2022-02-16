@@ -32,8 +32,8 @@ void	bs_three(t_stack *b, int r)
 	init_arr(arr, r, b->top);
 	if (arr[0] < arr[1] && arr[1] < arr[2])
 	{
-		rotate_stack(b, BSTACK);
-		rotate_stack(b, BSTACK);
+		swap_stack(b, BSTACK);
+		reverse_rotate_stack(b, BSTACK);
 	}
 	else if (arr[0] < arr[2] && arr[2] < arr[1])
 		rotate_stack(b, BSTACK);
