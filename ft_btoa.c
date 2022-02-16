@@ -69,9 +69,9 @@ void	b_to_a(t_stack *a, t_stack *b, int r)
 	int	command[3];
 	int	pivot[2];
 
-	// printf("in b r:%d\n", r);
-	// print_stack(a);
-	// print_stack(b);
+	printf("in b r:%d\n", r);
+	print_stack(a);
+	print_stack(b);
 	if (r <= 3)
 	{
 		b_under_three(a, b, r);
