@@ -34,7 +34,7 @@ static void	reverse(t_stack *a, t_stack *b, int c[])
 	int	i;
 
 	i = 0;
-	printf("%d %d", c[0], c[2]);
+	// printf("%d %d", c[0], c[2]);
 	while (i < c[0] && i < c[2])
 	{
 		reverse_rotate_togather(a, b);
@@ -57,6 +57,9 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 	int	command[3];
 	int	pivot[2];
 
+	// printf("in a r:%d\n", r);
+	// print_stack(a);
+	// print_stack(b);
 	if (r <= 3)
 	{
 		a_under_three(a, b, r);
@@ -64,11 +67,11 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 	}
 	init_command(command);
 	find_min_max(a, r, pivot);
-	printf("p1:%d p2:%d\n", pivot[0], pivot[1]);
+	// printf("p1:%d p2:%d\n", pivot[0], pivot[1]);
 	while (r--)
 		get_info(a, b, command, pivot);
 	reverse(a, b, command);
-	a_to_b(a, b, command[0]);
-	b_to_a(a, b, command[2]);
-	b_to_a(a, b, command[1] - command[2]);
+	a_to_b(a, b, command[0]);//ra
+	b_to_a(a, b, command[2]);//rb
+	b_to_a(a, b, command[1] - command[2]);//pb - rb
 }

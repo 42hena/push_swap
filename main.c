@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 		print_error("", a, b);
 	}
 	a_to_b(a, b, a->size);
-	t_dllist *tmp = a->top;
+	// t_dllist *tmp = a->top;
 	// while (size--)
 	// {
 	// 	printf("[%d]", tmp->value);
