@@ -83,6 +83,16 @@ void	b_under_three(t_stack *a, t_stack *b, int r)
 		else
 			bs_three(b, 3);
 	}
+	else if (r == 4)
+	{
+		bb_four(a, b, r);
+		return ;
+	}
+	else if (r == 5)
+	{
+		bb_five(a, b, r);
+		return ;
+	}
 	i = -1;
 	while (++i < r)
 		push_another_stack(b, a, ASTACK);

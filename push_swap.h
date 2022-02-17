@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:40:25 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 16:28:24 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/17 19:03:18 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ typedef struct s_stack{
 	t_dllist	*bottom;
 	int			size;
 }				t_stack;
+
+typedef struct s_info{
+	int			command[3];
+	int			pivot[2];
+	int			r;
+}				t_info;
+
 t_stack		*init_stack(void);
 bool		check_parameter(int argc, char **argv, t_stack *a);
 bool		check_argc(int argc);
@@ -57,7 +64,7 @@ void		reverserotatestack(t_stack *stack);
 void		reverse_rotate_togather(t_stack *a, t_stack *b);
 void		a_to_b(t_stack *a, t_stack *b, int r);
 void		b_to_a(t_stack *a, t_stack *b, int r);
-void		find_min_max(t_stack *tmp, int size, int pivot[2]);
+void		find_pivot(t_stack *tmp, t_info *info);
 void		print(t_stack *tmp, int kind);
 
 void		a_under_three(t_stack *a, t_stack *b, int r);
@@ -68,6 +75,10 @@ void		as_four(t_stack *a, t_stack *b, int r);
 void		a_two(t_stack *a);
 void		as_three(t_stack *a, int r);
 void		ab_three(t_stack *a, int r);
+void		ab_five(t_stack *a, t_stack *b, int r);
+void		ab_four(t_stack *a, t_stack *b, int r);
+void		bb_five(t_stack *a, t_stack *b, int r);
+void		bb_four(t_stack *a, t_stack *b, int r);
 
 void		a_min_max_mid(t_stack *a);
 void		a_mid_min_max(t_stack *a);

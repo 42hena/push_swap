@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:25:29 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 17:07:13 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/17 19:34:40 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ int	main(int argc, char **argv)
 	check_duplicate(a, b);
 	is_int_range(a, b);
 	check_sort(a, b);
-	
-	int size = a->size;
 	if (a->size <= 5)
 	{
 		a_under_five(a, b, a->size);
 		print_error("", a, b);
 	}
 	a_to_b(a, b, a->size);
+	int size = a->size;
 	t_dllist *tmp = a->top;
 	while (size--)
 	{

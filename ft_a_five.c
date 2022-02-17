@@ -68,6 +68,27 @@ void	as_five(t_stack *a, t_stack *b, int r)
 	b_to_a(a, b, 2);
 }
 
+void    ab_five(t_stack *a, t_stack *b, int r)
+{
+    int arr[5];
+    int mid;
+    int size;
+
+    init(a, arr, r);
+    mid = getmidvalue(arr, r);
+    size = r;
+    while (size--)
+    {
+        if (a->top->value >= mid)
+            rotate_stack(a, ASTACK);
+        else
+            push_another_stack(a, b, BSTACK);
+    }
+	for (int i = 0  ; i < 3 ; ++i)
+		reverse_rotate_stack(a, ASTACK);
+    a_to_b(a, b, 3);
+    b_to_a(a, b, 2);
+}
 void	as_four(t_stack *a, t_stack *b, int r)
 {
 	int	arr[4];
@@ -87,4 +108,27 @@ void	as_four(t_stack *a, t_stack *b, int r)
 	}
 	a_to_b(a, b, 2);
 	b_to_a(a, b, 2);
+}
+
+void    ab_four(t_stack *a, t_stack *b, int r)
+{
+    int arr[4];
+    int mid;
+    int size;
+
+    init(a, arr, r);
+    mid = getmidvalue(arr, r);
+    size = r;
+
+    while (size--)
+    {
+        if (a->top->value >= mid)
+            rotate_stack(a, ASTACK);
+        else
+            push_another_stack(a, b, BSTACK);
+    }
+	for (int i = 0  ; i < 2 ; ++i)
+		reverse_rotate_stack(a, ASTACK);
+    a_to_b(a, b, 2);
+    b_to_a(a, b, 2);
 }

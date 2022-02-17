@@ -6,42 +6,21 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:25:12 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 14:30:46 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/17 19:04:51 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// void	find_min_max(t_stack *tmp, int size, int pivot[2])
-// {
-// 	int			maxValue;
-// 	int			minValue;
-// 	t_dllist	*list;
-
-// 	maxValue = INTMIN;
-// 	minValue = INTMAX;
-// 	list = tmp->top;
-// 	while (size--)
-// 	{
-// 		if (minValue > list->value)
-// 			minValue = list->value;
-// 		if (maxValue < list->value)
-// 			maxValue = list->value;
-// 		list = list->next;
-// 	}
-// 	pivot[0] = (maxValue + minValue) / 2;
-// 	pivot[1] = (pivot[0] + minValue) / 2;
-// }
-
-
-void	bubble(int *arr, int size, int pivot[2])
+static void	bubble_sort(int *arr, t_info *info)
 {
 	int	i;
 	int	j;
 	int	tmp;
+	int	size;
 
+	size = info->r;
 	i = -1;
-
 	while (++i < size)
 	{
 		j = i;
@@ -55,24 +34,26 @@ void	bubble(int *arr, int size, int pivot[2])
 			}
 		}
 	}
-	pivot[0] = arr[size * 2 / 3];
-	pivot[1] = arr[size / 3];
+	info->pivot[0] = arr[size * 2 / 3];
+	info->pivot[1] = arr[size / 3];
 }
 
-void	find_min_max(t_stack *tmp, int size, int pivot[2])
+void	find_pivot(t_stack *tmp, t_info *info)
 {
 	int			i;
-	int			*arr;
+	int			*array;
 	t_dllist	*list;
+	int			size;
 
 	i = 0;
-	arr = malloc(sizeof(int) * size);
+	array = (int *)malloc(sizeof(int) * info->r);
 	list = tmp->top;
+	size = info->r;
 	while (size--)
 	{
-		arr[i] = list->value;
+		array[i++] = list->value;
 		list = list->next;
 	}
-	bubble(arr, tmp->size, pivot);
-	free(arr);
+	bubble_sort(array, info);
+	free(array);
 }

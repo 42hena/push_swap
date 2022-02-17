@@ -1,51 +1,89 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atob.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/17 19:22:58 by hena              #+#    #+#             */
+/*   Updated: 2022/02/17 19:39:01 by hena             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void	init_command(int command[3])
+static void	init_info(t_info *info, t_stack *tmp, int r)
 {
-	command[0] = 0;
-	command[1] = 0;
-	command[2] = 0;
+	info->command[0] = 0;
+	info->command[1] = 0;
+	info->command[2] = 0;
+	info->r = r;
+	find_pivot(tmp, info);
 }
 
-static void	get_info(t_stack *a, t_stack *b, int c[3], int p[2])
+static void get_acommand(t_stack *a, t_info *info)
+{
+    t_dllist    *tmp;
+	int			size;
+
+	size = info->r;
+    tmp = a->top;
+	while (size--)
+	{
+    	if (tmp->value >= info->pivot[0])
+       		info->command[0]++;
+    	else
+    	{
+        	info->command[1]++;
+        	if (tmp->value >= info->pivot[1])
+        		info->command[2]++;
+    	}
+		tmp = tmp->next;
+	}
+}
+
+static int	get_info(t_stack *a, t_stack *b, t_info info)
 {
 	t_dllist	*tmp;
 
 	tmp = a->top;
-	if (tmp->value >= p[0])
+	while (info.r--)
 	{
-		rotate_stack(a, ASTACK);
-		c[0]++;
-	}
-	else
-	{
-		push_another_stack(a, b, BSTACK);
-		c[1]++;
-		if (b->top->value >= p[1])
+		if (tmp->value >= info.pivot[0] && info.command[0] && !info.command[1])
 		{
-			rotate_stack(b, BSTACK);
-			c[2]++;
+			rotate_stack(a, ASTACK);
+			info.command[0]--;
+		}
+		else if (tmp->value < info.pivot[0] && info.command[1])
+		{
+			push_another_stack(a, b, BSTACK);
+			info.command[1]--;
+			if (b->top->value >= info.pivot[1])
+			{
+				rotate_stack(b, BSTACK);
+				info.command[2]--;
+			}
 		}
 	}
+	return (info.command[0]);
 }
 
-static void	reverse(t_stack *a, t_stack *b, int c[])
+static void	reverse(t_stack *a, t_stack *b, t_info info)
 {
 	int	i;
 
 	i = 0;
-	// printf("%d %d", c[0], c[2]);
-	while (i < c[0] && i < c[2])
+	while (i < info.command[0] && i < info.command[2])
 	{
 		reverse_rotate_togather(a, b);
 		++i;
 	}
-	while (i < c[0])
+	while (i < info.command[0])
 	{
 		reverse_rotate_stack(a, ASTACK);
 		++i;
 	}
-	while (i < c[2])
+	while (i < info.command[2])
 	{
 		reverse_rotate_stack(b, BSTACK);
 		++i;
@@ -54,24 +92,22 @@ static void	reverse(t_stack *a, t_stack *b, int c[])
 
 void	a_to_b(t_stack *a, t_stack *b, int r)
 {
-	int	command[3];
-	int	pivot[2];
+	t_info	info;
 
-	// printf("in a r:%d\n", r);
-	// print_stack(a);
-	// print_stack(b);
-	if (r <= 3)
+	printf("a in r: [%d]\n", r);
+	print_stack(a);
+	print_stack(b);
+	if (r <= 5)
 	{
 		a_under_three(a, b, r);
 		return ;
 	}
-	init_command(command);
-	find_min_max(a, r, pivot);
-	// printf("p1:%d p2:%d\n", pivot[0], pivot[1]);
-	while (r--)
-		get_info(a, b, command, pivot);
-	reverse(a, b, command);
-	a_to_b(a, b, command[0]);//ra
-	b_to_a(a, b, command[2]);//rb
-	b_to_a(a, b, command[1] - command[2]);//pb - rb
+	init_info(&info, a, r);
+	printf("p1:[%d], p2:[%d]", info.pivot[0], info.pivot[1]);
+	get_acommand(a, &info);
+	info.command[0] -= get_info(a, b, info);
+	reverse(a, b, info);
+	a_to_b(a, b, info.command[0]);//ra
+	b_to_a(a, b, info.command[2]);//rb
+	b_to_a(a, b, info.command[1] - info.command[2]);//pb - rb
 }
