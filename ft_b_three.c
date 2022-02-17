@@ -77,7 +77,7 @@ void	b_under_three(t_stack *a, t_stack *b, int r)
 		b_two(b);
 	else if (r == 3)
 	{
-		printf("size:%d\n",size );
+		// printf("size:%d\n",size );
 		if (size > 3)
 			bb_three(b, 3);
 		else

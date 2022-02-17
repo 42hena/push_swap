@@ -23,7 +23,7 @@ static void	get_info(t_stack *a, t_stack *b, int c[3], int p[2])
 {
 	t_dllist	*tmp;
 
-	printf("bpivot %d %d\n", p[1], p[0]);
+	// printf("bpivot %d %d\n", p[1], p[0]);
 	tmp = b->top;
 	if (tmp->value < p[1])
 	{
@@ -69,9 +69,9 @@ void	b_to_a(t_stack *a, t_stack *b, int r)
 	int	command[3];
 	int	pivot[2];
 
-	printf("in b r:%d\n", r);
-	print_stack(a);
-	print_stack(b);
+	// printf("in b r:%d\n", r);
+	// print_stack(a);
+	// print_stack(b);
 	if (r <= 3)
 	{
 		b_under_three(a, b, r);
