@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:25:29 by hena              #+#    #+#             */
-/*   Updated: 2022/02/17 19:34:40 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/17 21:12:13 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int	main(int argc, char **argv)
 		print_error("", a, b);
 	}
 	a_to_b(a, b, a->size);
-	int size = a->size;
+	/*int size = a->size;
 	t_dllist *tmp = a->top;
 	while (size--)
 	{
 		printf("[%d]", tmp->value);
 		tmp = tmp->next;
-	}
+	}*/
 	print_error("", a, b);
 }

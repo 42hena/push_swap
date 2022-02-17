@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:37:25 by hena              #+#    #+#             */
-/*   Updated: 2022/02/15 14:43:21 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/17 20:30:41 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void	print_swap_kind(int kind)
 {
 	if (kind == ASTACK)
-		write(1, "sa\n", 3);
-		// printf("sa\n");
+		//write(1, "sa\n", 3);
+		printf("sa\n");
 	else if (kind == BSTACK)
-		write(1, "sb\n", 3);
-		// printf("sb\n");
+		//write(1, "sb\n", 3);
+		printf("sb\n");
 }
 
 void	swap_stack(t_stack *stack, int kind)
@@ -85,8 +85,8 @@ void	swap_togather(t_stack *a, t_stack *b)
 {
 	swapstack(a);
 	swapstack(b);
-	write(1, "ss\n", 3);
-	// printf("ss\n");
+	//write(1, "ss\n", 3);
+	printf("ss\n");
 	// printf("A STACK\n");
 	// print_stack(a);
 	// printf("B STACK\n");
