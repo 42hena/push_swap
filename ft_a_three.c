@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:35:22 by hena              #+#    #+#             */
-/*   Updated: 2022/02/17 14:27:51 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/18 17:41:41 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,6 @@ void	a_under_three(t_stack *a, t_stack *b, int r)
 		else
 			as_three(a, 3);
 	}
-	else if (r == 4)
-		ab_four(a, b, 4);
-	else if (r == 5)
-		ab_five(a, b, 5);
+	else if (r == 4 || r == 5)
+		ab_five(a, b, r);
 }

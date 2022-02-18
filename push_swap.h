@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:40:25 by hena              #+#    #+#             */
-/*   Updated: 2022/02/17 19:03:18 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/18 17:49:07 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,6 @@ void		b_mid_min_max(t_stack *b);
 void		b_mid_max_min(t_stack *b);
 void		b_max_min_mid(t_stack *b);
 void		print_stack(t_stack *tmp);
+int			getmidvalue(int arr[], int r);
+void		init(t_stack *a, int arr[], int r);
 #endif

@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:25:23 by hena              #+#    #+#             */
-/*   Updated: 2022/02/17 21:12:01 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/18 17:57:05 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	get_info(t_stack *a, t_stack *b, t_info info)
 		{
 			push_another_stack(b, a, ASTACK);
 			info.command[1]--;
-			if (b->top->value < info.pivot[0])
+			if (a->top->value < info.pivot[0])
 			{
 				rotate_stack(a, ASTACK);
 				info.command[2]--;
@@ -108,7 +108,7 @@ void	b_to_a(t_stack *a, t_stack *b, int r)
 	rev = get_info(a, b, info);
 	//printf("next %d %d %d\n", info.command[0], info.command[1], info.command[2]);
 	a_to_b(a, b, info.command[1] - info.command[2]);
-	reverse(a, b, info, rev);
+	reverse(a, b, info, info.command[0] - rev);
 	a_to_b(a, b, info.command[2]);
 	b_to_a(a, b, info.command[0]);
 }

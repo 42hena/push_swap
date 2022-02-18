@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 19:22:58 by hena              #+#    #+#             */
-/*   Updated: 2022/02/18 16:22:40 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/18 18:04:10 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 	//printf("a in r: [%d]\n", r);
 	//print_stack(a);
 	//print_stack(b);
-	if (r <= 3)
+	if (r <= 5)
 	{
 		a_under_three(a, b, r);
 		return ;
@@ -107,7 +107,7 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 	rev = get_info(a, b, info);
 	//printf("%d", rev);
 	//printf("next %d %d %d\n", rev, info.command[1], info.command[2]);
-	reverse(a, b, info, rev);
+	reverse(a, b, info, info.command[0] - rev);
 	a_to_b(a, b, info.command[0]);//ra
 	b_to_a(a, b, info.command[2]);//rb
 	b_to_a(a, b, info.command[1] - info.command[2]);//pb - rb

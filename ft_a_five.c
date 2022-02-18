@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void	init(t_stack *a, int arr[], int r)
+void	init(t_stack *a, int arr[], int r)
 {
 	int			i;
 	t_dllist	*tmp;
@@ -37,7 +37,7 @@ static int	bubble(int sort[], int r)
 	return (sort[2]);
 }
 
-static int	getmidvalue(int arr[], int r)
+int	getmidvalue(int arr[], int r)
 {
 	int	sort[5];
 	int	i;
@@ -64,71 +64,6 @@ void	as_five(t_stack *a, t_stack *b, int r)
 		else
 			push_another_stack(a, b, BSTACK);
 	}
-	a_to_b(a, b, 3);
+	a_to_b(a, b, r - 2);
 	b_to_a(a, b, 2);
-}
-
-void    ab_five(t_stack *a, t_stack *b, int r)
-{
-    int arr[5];
-    int mid;
-    int size;
-
-    init(a, arr, r);
-    mid = getmidvalue(arr, r);
-    size = r;
-    while (size--)
-    {
-        if (a->top->value >= mid)
-            rotate_stack(a, ASTACK);
-        else
-            push_another_stack(a, b, BSTACK);
-    }
-	for (int i = 0  ; i < 3 ; ++i)
-		reverse_rotate_stack(a, ASTACK);
-    a_to_b(a, b, 3);
-    b_to_a(a, b, 2);
-}
-void	as_four(t_stack *a, t_stack *b, int r)
-{
-	int	arr[4];
-	int	mid;
-	int	size;
-
-	init(a, arr, r);
-	mid = getmidvalue(arr, r);
-	size = r;
-	
-	while (size--)
-	{
-		if (a->top->value >= mid)
-			rotate_stack(a, ASTACK);
-		else
-			push_another_stack(a, b, BSTACK);
-	}
-	a_to_b(a, b, 2);
-	b_to_a(a, b, 2);
-}
-
-void    ab_four(t_stack *a, t_stack *b, int r)
-{
-    int arr[4];
-    int mid;
-    int size;
-
-    init(a, arr, r);
-    mid = getmidvalue(arr, r);
-    size = r;
-
-    while (size--)
-    {
-        if (a->top->value >= mid)
-            rotate_stack(a, ASTACK);
-        else
-            push_another_stack(a, b, BSTACK);
-    }
-	for (int i = 0  ; i < 2 ; ++i)
-		reverse_rotate_stack(a, ASTACK);
-    a_to_b(a, b, 2);
-    b_to_a(a, b, 2);
 }

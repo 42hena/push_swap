@@ -1,11 +1,11 @@
 #include "push_swap.h"
 
-static void	init(t_stack *a, int arr[], int r)
+static void	inits(t_stack *b, int arr[], int r)
 {
 	int			i;
 	t_dllist	*tmp;
 
-	tmp = a->top;
+	tmp = b->top;
 	i = -1;
 	while (++i < r)
 	{
@@ -37,24 +37,13 @@ static int	bubble(int sort[], int r)
 	return (sort[2]);
 }
 
-static int	getmidvalue(int arr[], int r)
-{
-	int	sort[5];
-	int	i;
-
-	i = -1;
-	while (++i < r)
-		sort[i] = arr[i];
-	return (bubble(sort, r));
-}
-
 void    bb_five(t_stack *a, t_stack *b, int r)
 {
     int arr[5];
     int mid;
     int size;
 
-    init(b, arr, r);
+    inits(b, arr, r);
     mid = getmidvalue(arr, r);
     size = r;
     while (size--)
@@ -74,7 +63,7 @@ void    bb_four(t_stack *a, t_stack *b, int r)
     int mid;
     int size;
 
-    init(b, arr, r);
+    inits(b, arr, r);
     mid = getmidvalue(arr, r);
     size = r;
     while (size--)

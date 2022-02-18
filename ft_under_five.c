@@ -16,8 +16,6 @@ void    a_under_five(t_stack *a, t_stack *b, int r)
         else
             as_three(a, 3);
     }
-    else if (r == 4)
-        as_four(a, b, r);
-    else
+    else if (r == 4 || r == 5)
         as_five(a, b, r);
 }
