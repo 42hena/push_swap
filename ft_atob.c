@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 19:22:58 by hena              #+#    #+#             */
-/*   Updated: 2022/02/17 21:12:23 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/18 16:22:40 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 	//printf("a in r: [%d]\n", r);
 	//print_stack(a);
 	//print_stack(b);
-	if (r <= 5)
+	if (r <= 3)
 	{
 		a_under_three(a, b, r);
 		return ;
