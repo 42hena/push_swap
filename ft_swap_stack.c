@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:37:25 by hena              #+#    #+#             */
-/*   Updated: 2022/02/17 20:30:41 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/20 13:35:58 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 static void	print_swap_kind(int kind)
 {
 	if (kind == ASTACK)
-		//write(1, "sa\n", 3);
-		printf("sa\n");
+		write(1, "sa\n", 3);
 	else if (kind == BSTACK)
-		//write(1, "sb\n", 3);
-		printf("sb\n");
+		write(1, "sb\n", 3);
 }
 
 void	swap_stack(t_stack *stack, int kind)
@@ -47,12 +45,6 @@ void	swap_stack(t_stack *stack, int kind)
 		stack->top = next;
 	}
 	print_swap_kind(kind);
-	// if (kind == ASTACK)
-	// 	printf("A STACK\n");
-	// else
-	// 	printf("B STACK\n");
-	// print_stack(stack);
-	
 }
 
 void	swapstack(t_stack *stack)
@@ -85,10 +77,5 @@ void	swap_togather(t_stack *a, t_stack *b)
 {
 	swapstack(a);
 	swapstack(b);
-	//write(1, "ss\n", 3);
-	printf("ss\n");
-	// printf("A STACK\n");
-	// print_stack(a);
-	// printf("B STACK\n");
-	// print_stack(b);
+	write(1, "ss\n", 3);
 }

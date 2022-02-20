@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ab_five.c                                       :+:      :+:    :+:   */
+/*   ft_bb_five.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/20 13:21:21 by hena              #+#    #+#             */
-/*   Updated: 2022/02/20 14:40:16 by hena             ###   ########.fr       */
+/*   Created: 2022/02/20 13:45:43 by hena              #+#    #+#             */
+/*   Updated: 2022/02/20 14:46:35 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ static void	init_com(int com[])
 	com[1] = 0;
 }
 
-static void	get_com(t_stack *a, int com[], int r, int mid)
+static void	get_com(t_stack *b, int com[], int r, int mid)
 {
 	int			i;
 	t_dllist	*tmp;
 
 	i = -1;
-	tmp = a->top;
+	tmp = b->top;
 	while (++i < r)
 	{
-		if (tmp->value >= mid)
+		if (tmp->value < mid)
 			com[0]++;
 		else
 			com[1]++;
@@ -35,40 +35,40 @@ static void	get_com(t_stack *a, int com[], int r, int mid)
 	}
 }
 
-static void	restore_stack(t_stack *a, int r)
+static void	restore_stack(t_stack *b, int r)
 {
 	int	i;
 
 	i = -1;
 	while (++i < r)
-		reverse_rotate_stack(a, ASTACK);
+		reverse_rotate_stack(b, BSTACK);
 }
 
-void	ab_five(t_stack *a, t_stack *b, int r)
+void	bb_five(t_stack *a, t_stack *b, int r)
 {
-	int	arr[5];
-	int	mid;
-	int	com[2];
-	int	i;
+	int			arr[5];
+	int			mid;
+	int			com[2];
+	int			i;
 
-	init(a, arr, r);
+	init(b, arr, r);
 	mid = getmidvalue(arr, r);
-	get_com(a, com, r, mid);
+	get_com(b, com, r, mid);
 	i = -1;
 	while (++i < r)
 	{
-		if (a->top->value >= mid && com[1])
+		if (b->top->value < mid && com[1])
 		{
-			rotate_stack(a, ASTACK);
+			rotate_stack(b, BSTACK);
 			com[0]--;
 		}
-		else if (a->top->value < mid)
+		else if (b->top->value >= mid)
 		{
-			push_another_stack(a, b, BSTACK);
+			push_another_stack(b, a, ASTACK);
 			com[1]--;
 		}
 	}
-	restore_stack(a, r - 2 - com[0]);
+	restore_stack(b, r - 2 - com[0]);
 	a_to_b(a, b, r - 2);
 	b_to_a(a, b, 2);
 }

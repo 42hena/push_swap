@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:40:25 by hena              #+#    #+#             */
-/*   Updated: 2022/02/18 17:49:07 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/20 14:41:36 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void		b_to_a(t_stack *a, t_stack *b, int r);
 void		find_pivot(t_stack *tmp, t_info *info);
 void		print(t_stack *tmp, int kind);
 
-void		a_under_three(t_stack *a, t_stack *b, int r);
-void		b_under_three(t_stack *a, t_stack *b, int r);
+void		handle_a_under_five(t_stack *a, t_stack *b, int r);
+void		handle_b_under_five(t_stack *a, t_stack *b, int r);
 void		a_under_five(t_stack *a, t_stack *b, int r);
 void		as_five(t_stack *a, t_stack *b, int r);
 void		as_four(t_stack *a, t_stack *b, int r);
@@ -94,4 +94,7 @@ void		b_max_min_mid(t_stack *b);
 void		print_stack(t_stack *tmp);
 int			getmidvalue(int arr[], int r);
 void		init(t_stack *a, int arr[], int r);
+
+bool		is_asorted(t_stack *s, int r);
+bool		is_bsorted(t_stack *s, int r);
 #endif

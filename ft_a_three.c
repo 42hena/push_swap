@@ -6,7 +6,7 @@
 /*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:35:22 by hena              #+#    #+#             */
-/*   Updated: 2022/02/18 17:41:41 by hena             ###   ########.fr       */
+/*   Updated: 2022/02/20 14:42:55 by hena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ab_three(t_stack *a, int r)
 		a_max_mid_min(a);
 }
 
-void	a_under_three(t_stack *a, t_stack *b, int r)
+void	handle_a_under_five(t_stack *a, t_stack *b, int r)
 {
 	int	size;
 

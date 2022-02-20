@@ -65,7 +65,7 @@ void	bb_three(t_stack *b, int r)
 		b_max_min_mid(b);
 }
 
-void	b_under_three(t_stack *a, t_stack *b, int r)
+void	handle_b_under_five(t_stack *a, t_stack *b, int r)
 {
 	int	size;
 	int	i;
@@ -77,18 +77,12 @@ void	b_under_three(t_stack *a, t_stack *b, int r)
 		b_two(b);
 	else if (r == 3)
 	{
-		// printf("size:%d\n",size );
 		if (size > 3)
 			bb_three(b, 3);
 		else
 			bs_three(b, 3);
 	}
-	else if (r == 4)
-	{
-		bb_four(a, b, r);
-		return ;
-	}
-	else if (r == 5)
+	else if (r == 4 || r == 5)
 	{
 		bb_five(a, b, r);
 		return ;

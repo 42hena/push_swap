@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_push_another.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/20 13:14:30 by hena              #+#    #+#             */
+/*   Updated: 2022/02/20 13:14:31 by hena             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_dllist	*handle_from(t_stack *from)
@@ -51,11 +63,7 @@ void	push_another_stack(t_stack *from, t_stack *to, int kind)
 	iter_from = handle_from(from);
 	handle_to(iter_from, to);
 	if (kind == ASTACK)
-		//write(1, "pa\n", 3);
-		printf("pa\n");
+		write(1, "pa\n", 3);
 	else if (kind == BSTACK)
-		//write(1, "pb\n", 3);
-		printf("pb\n");
-	// print_stack(from);
-	// print_stack(to);
+		write(1, "pb\n", 3);
 }

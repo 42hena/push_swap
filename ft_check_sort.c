@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_sort.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hena <hena@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/20 13:20:09 by hena              #+#    #+#             */
+/*   Updated: 2022/02/20 13:20:14 by hena             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	bubble(int arr[], int size)
@@ -22,7 +34,7 @@ static void	bubble(int arr[], int size)
 	}
 }
 
-bool	check_same(t_stack *a, int arr[])
+static bool	check_same(t_stack *a, int arr[])
 {
 	t_dllist	*list;
 	int			size;
