@@ -14,8 +14,6 @@
 
 bool	check_parameter(int argc, char **argv, t_stack *a)
 {
-	if (!check_argc(argc))
-		return (false);
 	if (!check_argv(argc, argv, a))
 		return (false);
 	return (true);
